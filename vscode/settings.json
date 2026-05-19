@@ -1,0 +1,152 @@
+{
+  //Java
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-1.8",
+      "path": "C:/Program Files/Java/jdk1.8.0_471",
+      "default": true,
+    },
+    {
+      "name": "JavaSE-25",
+      "path": "C:/Program Files/Java/jdk-25.0.1",
+    },
+    {
+      "name": "JavaSE-21",
+      "path": "C:/Program Files/Java/jdk-21.0.9",
+    },
+  ],
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java",
+  },
+
+  //VIM
+  "vim.leader": "<space>",
+  "vim.useSystemClipboard": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"],
+    },
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "F"],
+      "commands": ["editor.action.formatDocument"],
+    },
+    {
+      "before": ["<leader>", "x"],
+      "commands": ["workbench.view.extensions"],
+    },
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"],
+    },
+    {
+      "before": ["<leader>", "n"],
+      "commands": ["workbench.action.terminal.newWithCwd"],
+    },
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.revealDefinition"],
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"],
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.save"], // <space>w = save file
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"], // <space>q = close tab
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.view.explorer"],
+    },
+    {
+      "before": ["<leader>", "b"],
+      "commands": ["workbench.action.toggleSidebarVisibility"],
+    },
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.terminal.toggleTerminal"],
+    },
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"],
+    },
+  ],
+
+  //Svelte
+  "svelte.enable-ts-plugin": true,
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode",
+  },
+
+  //Rust
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+  },
+
+  //Others
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml",
+  },
+  "terminal.integrated.tabs.enabled": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features",
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features",
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "explorer.confirmDragAndDrop": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "update.mode": "none",
+  "workbench.startupEditor": "none",
+  "workbench.activityBar.location": "top",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "editor.scrollbar.verticalScrollbarSize": 10,
+  "editor.scrollbar.horizontalScrollbarSize": 10,
+  "window.newWindowDimensions": "maximized",
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontLigatures": true,
+  "window.zoomLevel": 0.25,
+  "editor.fontSize": 12,
+  "terminal.integrated.fontSize": 12,
+  "editor.lineHeight": 18,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500,
+  "editor.minimap.enabled": false,
+  "editor.minimap.autohide": "mouseover",
+  "workbench.sideBar.location": "right",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "explorer.confirmDelete": false,
+  "breadcrumbs.enabled": false,
+  "editor.lineNumbers": "relative",
+  "github.copilot.enable": {
+    "*": false,
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+}

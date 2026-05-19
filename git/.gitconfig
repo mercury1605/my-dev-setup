@@ -1,0 +1,10 @@
+[user]
+	email = nguyenthuy010605@gmail.com
+	name = TNguyen
+
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	
