@@ -1,141 +1,61 @@
 # My Dev Setup
 
-Personal development environment bootstrap repository.
+A modular, PowerShell-driven bootstrap repository for quickly recreating a consistent Windows development environment.
 
-This repository contains the configuration files, scripts, and setup resources I use to quickly recreate my development environment on a new machine.
+## 🚀 Overview
 
-The goal is to make my setup:
-- reproducible
-- portable
-- version controlled
-- easy to maintain
+This repository automates the installation and configuration of core development tools. It is designed to be reproducible, portable, and version-controlled, ensuring you can go from a fresh Windows install to a ready-to-code state in minutes.
 
----
+## ✨ Key Features
 
-# Included Setup
+- **Package Management**: Automated setup of [Scoop](https://scoop.sh/).
+- **Core Runtimes**: Automated installation of **Git**, **Node.js**, and **Java**.
+- **VS Code Optimization**: 
+  - Bulk installation of extensions from `vscode/extensions.txt`.
+  - Synchronization of `settings.json` and `keybindings.json` to `%APPDATA%`.
+- **Modular Architecture**: Independent PowerShell modules for each component, making it easy to add or remove tools.
+- **Safe Execution**: Includes pre-flight checks (PowerShell version, connectivity) and comprehensive logging.
 
-Currently this repository manages:
+## 📁 Repository Structure
 
-- VS Code extensions
-- VS Code settings
-- Development bootstrap scripts
-- General development tooling configuration
-
-This repository may later expand to include:
-- IntelliJ IDEA settings/plugins
-- Git configuration
-- Terminal configuration
-- Node.js / pnpm setup
-- Java / Tomcat setup
-- Docker setup
-- AI engineering tooling
-
----
-
-# Repository Structure
-
-```txt
+```text
 my-dev-setup/
-│
-├── vscode/
-│   ├── extensions.txt
-│   ├── settings.json
-│   └── keybindings.json
-│
-├── scripts/
-│   └── setup.ps1
-│
-└── README.md
+├── git/                # Git configuration (e.g., .gitconfig)
+├── scripts/            # Modular PowerShell scripts
+│   ├── setup.ps1       # Main orchestrator script
+│   └── install-*.ps1   # Component-specific installation modules
+└── vscode/             # VS Code settings and extension lists
 ```
 
----
+## 🛠️ Prerequisites
 
-# VS Code Extensions
+- **Windows 10/11**
+- **PowerShell 5.1+**
+- Internet connection
 
-Export installed extensions:
+## 📥 Getting Started
 
-```bash
-code --list-extensions --show-versions > vscode/extensions.txt
-```
+1. **Clone the repository**:
+   ```powershell
+   git clone <repo-url>
+   cd my-dev-setup
+   ```
 
-Install all extensions from file:
+2. **Run the bootstrap script**:
+   ```powershell
+   ./scripts/setup.ps1
+   ```
 
-## PowerShell
+3. **Verification**:
+   Review the `logs/setup.log` file to ensure all modules completed successfully.
 
-```powershell
-Get-Content vscode/extensions.txt |
-ForEach-Object {
-    code --install-extension $_
-}
-```
+## ⚙️ Customization
 
----
+- **VS Code Extensions**: Update `vscode/extensions.txt` with your extension IDs (one per line).
+- **VS Code Settings**: Customize `vscode/settings.json` to suit your workflow.
+- **Adding Tools**: Create a new `install-xxx.ps1` script in the `scripts/` directory and invoke it from `setup.ps1`.
 
-# VS Code Settings
+## 📝 Notes
 
-VS Code user settings are stored at:
-
-## Windows
-
-```txt
-%APPDATA%\Code\User\
-```
-
-Files may include:
-- settings.json
-- keybindings.json
-
----
-
-# Setup Workflow
-
-## Clone Repository
-
-```bash
-git clone <repo-url>
-```
-
-## Run Setup Script
-
-```powershell
-./scripts/setup.ps1
-```
-
-The setup script may:
-- install VS Code extensions
-- copy configuration files
-- install development tools
-- configure the local environment
-
----
-
-# Philosophy
-
-This repository is not intended to back up an entire machine.
-
-Instead, it stores:
-- configuration
-- setup instructions
-- environment declarations
-
-The objective is to rebuild a clean development environment quickly and consistently.
-
----
-
-# Notes
-
-- Some tools still require manual installation.
-- Sensitive information should never be committed.
-- Machine-specific paths may require adjustment.
-
----
-
-# Future Improvements
-
-Potential future additions:
-- Automated package installation
-- Cross-platform support
-- Docker/dev container setup
-- WSL integration
-- AI development tooling
-- Full machine bootstrap automation
+- **Security**: Never commit sensitive information (API keys, personal credentials) to this repository.
+- **Portability**: This setup focuses on portable tools via Scoop to keep the system clean.
