@@ -10,30 +10,43 @@ if (!(Test-Path $vscodeUserPath)) {
         -Force
 }
 
-# settings.json
-$settingsSource =
-"$PSScriptRoot/../vscode/settings.json"
+function Apply-VscodeConfig {
+    param (
+        [string]$FileName
+    )
 
-if (Test-Path $settingsSource) {
+    $source = "$PSScriptRoot/../vscode/$FileName"
+    $dest = "$vscodeUserPath/$FileName"
 
-    Copy-Item `
-        $settingsSource `
-        "$vscodeUserPath/settings.json" `
-        -Force
+    if (Test-Path $source) {
+        
+        if (Test-Path $dest) {
+            $item = Get-Item $dest
+            
+            # If it's already a symlink, just remove it to recreate
+            if ($item.Attributes -match "ReparsePoint") {
+                Remove-Item $dest -Force
+            }
+            else {
+                # Backup real file
+                $backup = "$dest.bak"
+                Write-Host "[INFO] Backing up existing $FileName to $FileName.bak"
+                Move-Item $dest $backup -Force
+            }
+        }
 
-    Write-Host "[OK] settings.json applied."
+        try {
+            New-Item -ItemType SymbolicLink -Path $dest -Target $source -Force | Out-Null
+            Write-Host "[OK] Symbolic link created for $FileName."
+        }
+        catch {
+            Write-Host "[WARNING] Could not create symlink for $FileName. Falling back to copy."
+            Copy-Item $source $dest -Force
+            Write-Host "[OK] $FileName applied via copy."
+        }
+    }
 }
 
-# keybindings.json
-$keybindingsSource =
-"$PSScriptRoot/../vscode/keybindings.json"
-
-if (Test-Path $keybindingsSource) {
-
-    Copy-Item `
-        $keybindingsSource `
-        "$vscodeUserPath/keybindings.json" `
-        -Force
-
-    Write-Host "[OK] keybindings.json applied."
-}
+# Apply configurations
+Apply-VscodeConfig "settings.json"
+Apply-VscodeConfig "keybindings.json"

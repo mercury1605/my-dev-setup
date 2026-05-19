@@ -125,7 +125,10 @@ function Invoke-SetupModule {
 # =========================================================
 
 Invoke-SetupModule "install-scoop.ps1"
+Refresh-Environment
+
 Invoke-SetupModule "install-git.ps1"
+Invoke-SetupModule "apply-git-config.ps1"
 Invoke-SetupModule "install-node.ps1"
 Invoke-SetupModule "install-java.ps1"
 Invoke-SetupModule "install-vscode.ps1"
@@ -140,6 +143,12 @@ Write-Host ""
 Write-Host "========================================="
 Write-Host "         SETUP COMPLETED"
 Write-Host "========================================="
+Write-Host ""
+
+Write-Host "[DONE] Development environment ready."
+Write-Host "[INFO] Log file: $LogFile"
+
+Stop-TranscriptWrite-Host "========================================="
 Write-Host ""
 
 Write-Host "[DONE] Development environment ready."
